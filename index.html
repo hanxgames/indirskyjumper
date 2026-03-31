@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Download Sky Jumper</title>
+  <script>
+    const androidUrl = "https://play.google.com/store/apps/details?id=com.hantro.skyjumper";
+    const iosUrl = "https://apps.apple.com/app/idBURAYA_APP_ID";
+    const fallbackUrl = androidUrl; // bilinmeyen cihazlarda varsayılan
+
+    function detectAndRedirect() {
+      const ua = navigator.userAgent || navigator.vendor || window.opera;
+
+      if (/android/i.test(ua)) {
+        window.location.replace(androidUrl);
+        return;
+      }
+
+      if (/iPad|iPhone|iPod/.test(ua) && !window.MSStream) {
+        window.location.replace(iosUrl);
+        return;
+      }
+
+      window.location.replace(fallbackUrl);
+    }
+
+    window.onload = () => {
+      setTimeout(detectAndRedirect, 300);
+    };
+  </script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding: 40px 20px;
+      background: #111;
+      color: white;
+    }
+    .btn {
+      display: block;
+      max-width: 280px;
+      margin: 12px auto;
+      padding: 14px 18px;
+      text-decoration: none;
+      border-radius: 10px;
+      background: #2b2b2b;
+      color: white;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <h1>Sky Jumper</h1>
+  <p>Yönlendiriliyorsun... Açılmazsa aşağıdan seç.</p>
+
+  <a class="btn" href="https://play.google.com/store/apps/details?id=com.hantro.skyjumper">
+    Android için indir
+  </a>
+
+  <a class="btn" href="https://apps.apple.com/app/6760672780">
+    iPhone için indir
+  </a>
+</body>
+</html>
